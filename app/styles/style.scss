@@ -26,11 +26,11 @@ body {
 		family: $primary-font;
 	}
 	color: $text-color;
-	background-color: $bg-color;
+	// background-color: gray;
 }
 
 a {
-	color: $link-color;
+	color: white;
 	text-decoration: none;
 	
 }
@@ -378,7 +378,7 @@ Main Components
 		top: 0;
 		right: 0;
 		z-index: 3;
-		background: rgba(#000, .1);
+		color:white;
 		/* replace text with icon */
 		color: transparent;
 		white-space: nowrap;

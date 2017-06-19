@@ -37,6 +37,7 @@ jQuery(document).ready(function($){
 		this.scheduleReset();
 		this.initEvents();
 	};
+	 
 
 	SchedulePlan.prototype.scheduleReset = function() {
 		var mq = this.mq();
