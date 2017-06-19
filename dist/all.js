@@ -4,10 +4,10 @@ angular.module("app", ["ui.router"]).config(function ($stateProvider, $urlRouter
 
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state("login", {
-        url: "/login",
-        templateUrl: "./app/views/login.html",
-        controller: "loginCtrl"
+    $stateProvider.state("home", {
+        url: "/home",
+        templateUrl: "./app/views/home.html",
+        controller: "homeCtrl"
     }).state("calendar", {
         url: "/calendar",
         templateUrl: "./app/views/calendar.html",
@@ -16,16 +16,64 @@ angular.module("app", ["ui.router"]).config(function ($stateProvider, $urlRouter
         url: "/newEvent",
         templateUrl: "./app/views/newEvent.html",
         controller: "newEventController"
+    }).state("login", {
+        url: "/login",
+        templateUrl: "./app/views/login.html",
+        controller: "loginCtrl"
     });
 });
 "use strict";
+
+angular.module("app").controller("calendarCtrl", function () {});
 "use strict";
+
+angular.module("app").controller("homeCtrl", function () {});
+"use strict";
+
+angular.module("app").controller("loginCtrl", function () {});
 "use strict";
 
 angular.module("app").controller("mainCtrl", function ($scope, mainSvc) {
     // $scope.test = mainSvc.test
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function(event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+
+    $scope.create = function (event) {
+        console.log("controller", event);
+        mainSvc.createEvent(event).then(function (res) {
+            // if (res.data.length > 0){
+            //     $state.go('calendar')
+            // }
+        });
+    };
 });
 "use strict";
+
+angular.module("app").controller("newEventCtrl", function () {});
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2779,6 +2827,14 @@ angular.module("app").service("mainSvc", function ($http) {
         return $http({
             method: "GET",
             url: "/auth"
+        });
+    };
+    this.createEvent = function (event) {
+        console.log('Service', event);
+        return $http({
+            url: '/api/create-event',
+            method: 'POST',
+            data: event
         });
     };
 });
