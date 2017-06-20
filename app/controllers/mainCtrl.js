@@ -27,13 +27,5 @@ span.onclick = function() {
 //     }
 // }
 
-$scope.create = (event) => {
-    console.log("controller", event)
-    mainSvc.createEvent(event).then(res => {
-        // if (res.data.length > 0){
-        //     $state.go('calendar')
-        // }
-    })
-}
 
 })

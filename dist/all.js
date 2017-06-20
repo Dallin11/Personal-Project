@@ -12,76 +12,16 @@ angular.module("app", ["ui.router"]).config(function ($stateProvider, $urlRouter
         url: "/calendar",
         templateUrl: "./app/views/calendar.html",
         controller: "calendarCtrl"
-    }).state("newEvent", {
-        url: "/newEvent",
-        templateUrl: "./app/views/newEvent.html",
-        controller: "newEventController"
+    }).state("grades", {
+        url: "/grades",
+        templateUrl: "./app/views/grades.html",
+        controller: "gradesCtrl"
     }).state("login", {
         url: "/login",
         templateUrl: "./app/views/login.html",
         controller: "loginCtrl"
     });
 });
-"use strict";
-
-angular.module("app").controller("calendarCtrl", function () {
-    $("#color-picker").spectrum({
-        showPaletteOnly: true,
-        showPalette: true,
-        hideAfterPaletteSelect: true,
-        color: 'blanchedalmond',
-        palette: [['black', 'white', 'blanchedalmond', 'rgb(255, 128, 0);', 'hsv 100 70 50'], ['red', 'yellow', 'green', 'blue', 'violet']]
-    });
-});
-"use strict";
-
-angular.module("app").controller("homeCtrl", function () {});
-"use strict";
-
-angular.module("app").controller("loginCtrl", function () {});
-"use strict";
-
-angular.module("app").controller("mainCtrl", function ($scope, mainSvc) {
-    // $scope.test = mainSvc.test
-
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal 
-    // btn.onclick = function() {
-    //     modal.style.display = "block";
-    // }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
-
-    $scope.create = function (event) {
-        console.log("controller", event);
-        mainSvc.createEvent(event).then(function (res) {
-            // if (res.data.length > 0){
-            //     $state.go('calendar')
-            // }
-        });
-    };
-});
-"use strict";
-
-angular.module("app").controller("newEventCtrl", function () {});
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5057,6 +4997,121 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             $.fn.spectrum.processNativeColorInputs();
         }
     });
+});
+"use strict";
+
+angular.module("app").controller("calendarCtrl", function ($scope) {
+    $("#color-picker").spectrum({
+        showPaletteOnly: true,
+        showPalette: true,
+        hideAfterPaletteSelect: true,
+        color: 'blanchedalmond',
+        palette: [['black', 'white', 'blanchedalmond', 'rgb(255, 128, 0);', 'hsv 100 70 50'], ['red', 'yellow', 'green', 'blue', 'violet']]
+    });
+
+    $scope.create = function (event) {
+        console.log("controller", event);
+    };
+});
+"use strict";
+
+angular.module("app").controller("gradesCtrl", function ($scope, mainSvc) {
+
+    var students = [{ "FirstName": "Dallin", "LastName": "Anderson", "Grade": 2 }];
+
+    var grade = [{ Name: "", id: 0 }, { Name: 1, id: 1 }, { Name: 2, id: 2 }, { Name: 3, id: 3 }, { Name: 4, id: 4 }];
+    console.log($("#jsGrid"));
+    _$("#jsGrid").jsGrid({
+        width: "100%",
+        height: "400px",
+
+        inserting: true,
+        editing: true,
+        sorting: true,
+        paging: true,
+
+        data: students,
+
+        fields: [{ name: "FirstName", type: "text", width: 150, validate: "required" }, { name: "LastName", type: "text", width: 150 }, { name: "Grade", type: "select", items: grade, valueField: "Id", textField: "Name" }, { type: "control" }]
+
+    });
+});
+
+// var myData = [
+//         {
+//             "firstName": "Brian", 
+//             "lastName": "Carney",
+//             "grade": 1
+
+//         },
+//         {"firstName": "Dallin",
+//             "lastName": "Anderson",
+//             "grade": "4"
+
+//         },
+//         {
+//             "firstName": "John",
+//             "lastName": "doe",
+//             "grade": "3"
+//         }
+//     ];
+
+//     const columnDefs1 = [
+//         {name: 'firstName'},
+//         {name: 'lastName'},
+//         {name: 'grade'}
+//     ]
+
+//     $scope.gridOpts = {
+//         columnDefs: columnDefs1,
+//         data: myData
+//     }
+
+//     $scope.addData = function() {
+//     var n = $scope.gridOpts.data.length + 1;
+//     $scope.gridOpts.data.push({
+//                 "firstName": "New " + n,
+//                 "lastName": "Person " + n,
+//                 "grade": 1-4
+//               })
+//     };
+"use strict";
+
+angular.module("app").controller("homeCtrl", function () {});
+"use strict";
+
+angular.module("app").controller("loginCtrl", function () {});
+"use strict";
+
+angular.module("app").controller("mainCtrl", function ($scope, mainSvc) {
+    // $scope.test = mainSvc.test
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    // btn.onclick = function() {
+    //     modal.style.display = "block";
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function(event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+
 });
 "use strict";
 

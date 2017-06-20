@@ -109,8 +109,13 @@ input, select {
     -ms-flex-pack: justify;
     justify-content: space-between;
     height: 40vh; }
-    .ae-modal .ae-modal-wrapper .cd-schedule {
-      color: purple; }
+
+ul {
+  list-style-type: none; }
+
+.myGrid {
+  width: 100%;
+  height: 250px; }
 
 /* -------------------------------- */
 /* Primary style */

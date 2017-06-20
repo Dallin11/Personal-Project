@@ -1,4 +1,4 @@
-angular.module("app").controller("calendarCtrl", function () {
+angular.module("app").controller("calendarCtrl", function ($scope) {
     $("#color-picker").spectrum({
         showPaletteOnly: true,
         showPalette: true,
@@ -11,4 +11,11 @@ angular.module("app").controller("calendarCtrl", function () {
             ['red', 'yellow', 'green', 'blue', 'violet']
         ]
     });
+
+
+$scope.create = (event) => {
+    console.log("controller", event);
+}
+
+
 })

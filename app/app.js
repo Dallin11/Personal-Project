@@ -13,10 +13,10 @@ angular.module("app", ["ui.router"]).config(function ($stateProvider, $urlRouter
             templateUrl: "./app/views/calendar.html",
             controller: "calendarCtrl"
         })
-        .state("newEvent", {
-            url: "/newEvent",
-            templateUrl: "./app/views/newEvent.html",
-            controller: "newEventController"
+        .state("grades", {
+            url: "/grades",
+            templateUrl: "./app/views/grades.html",
+            controller: "gradesCtrl"
         })
         .state("login", {
             url: "/login",
