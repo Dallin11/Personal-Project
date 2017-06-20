@@ -40,10 +40,10 @@
 					<input type="text" placeholder="Description" ng-model="event.description">
 					<input type="text" placeholder="Notes" ng-model="event.notes">
 					<input type="text" placeholder="Time" ng-model="event.time">
-					<input type="text" placeholder="Color" ng-model="event.color" id="color-picker">
+					<input type="color" ng-model="event.color">
 					</div>
 				<button ng-click="create(event)">Create Event</button>
-				<a ui-sref="grades">Grades</a>
+				<button ui-sref="grades">Grades</button>
 			</div>
 
 		</div>

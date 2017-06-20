@@ -109,6 +109,8 @@ input, select {
     -ms-flex-pack: justify;
     justify-content: space-between;
     height: 40vh; }
+    .ae-modal .ae-modal-wrapper .close {
+      color: white; }
 
 ul {
   list-style-type: none; }
